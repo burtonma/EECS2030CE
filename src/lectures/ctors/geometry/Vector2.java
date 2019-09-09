@@ -134,7 +134,7 @@ public class Vector2 {
 	 * 
 	 * <p>
 	 * Use this method when you want to write something like
-	 * {@code v = s * v} where {@code v} is a point and {@code s}
+	 * {@code v = s * v} where {@code v} is a vector and {@code s}
 	 * is a scalar.
 	 * 
 	 * @param s the scalar value to multiply this vector by
