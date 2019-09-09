@@ -14,14 +14,14 @@ public class Vector2 {
 	private double y;
 
 	/**
-	 * Initializes the elements of this vector to {@code (0.0, 0.0)}.
+	 * Initializes the coordinates of this vector to {@code (0.0, 0.0)}.
 	 */
 	public Vector2() {
 		this(0.0, 0.0);
 	}
 	
 	/**
-	 * Initializes the elements of this vector to {@code (x, y)} where
+	 * Initializes the coordinates of this vector to {@code (x, y)} where
 	 * {@code x} and {@code y} are specified by the caller.
 	 * 
 	 * @param x the x value of this vector
@@ -33,14 +33,13 @@ public class Vector2 {
 	}
 
 	/**
-	 * Initializes the elements of this vector by copying the elements
+	 * Initializes the coordinates of this vector by copying the coordinates
 	 * from {@code other}.
 	 * 
-	 * @param other the coordinate to copy
+	 * @param other the vector to copy
 	 */
 	public Vector2(Vector2 other) {
-		this.x = other.x;
-		this.y = other.y;
+		this(other.x, other.y);
 	}
 	
 	/**
@@ -65,7 +64,7 @@ public class Vector2 {
 	 * Sets the x coordinate to the specified value.
 	 * 
 	 * @param newX the new x coordinate
-	 * @return a reference to this coordinate
+	 * @return a reference to this vector
 	 */
 	public Vector2 x(double newX) {
 		this.x = newX;
@@ -76,7 +75,7 @@ public class Vector2 {
 	 * Sets the y coordinate to the specified value.
 	 * 
 	 * @param newY the new y coordinate
-	 * @return a reference to this coordinate
+	 * @return a reference to this vector
 	 */
 	public Vector2 y(double newY) {
 		this.y = newY;
@@ -88,7 +87,7 @@ public class Vector2 {
 	 * 
 	 * @param newX the new x coordinate
 	 * @param newY the new y coordinate
-	 * @return a reference to this coordinate
+	 * @return a reference to this vector
 	 */
 	public Vector2 set(double newX, double newY) {
 		this.x = newX;
@@ -224,5 +223,32 @@ public class Vector2 {
 	 */
 	public static Vector2 negate(Vector2 v) {
 		return new Vector2(v).negate();
+	}
+	
+	/**
+	 * Returns a string representation of this vector. The string
+	 * representation are the coordinates of this vector separated by
+	 * a comma and space all inside a pair of parentheses.
+	 * 
+	 * @return a string representation of this vector
+	 */
+	@Override
+	public String toString() {
+		StringBuilder s = new StringBuilder("(");
+		s.append(this.x).
+			append(", ").
+			append(this.y).
+			append(")");
+		return s.toString();
+}
+	
+	public static void main(String[] args) {
+		// make a new vector specifying the coordinates
+		Vector2 v = new Vector2(1.0, -1.5);
+		System.out.println("v: " + v.toString());
+		
+		// make a new vector copying an existing point
+		Vector2 w = new Vector2(v);
+		System.out.println("w: " + w.toString());
 	}
 }

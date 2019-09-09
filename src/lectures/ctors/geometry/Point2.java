@@ -16,8 +16,7 @@ public class Point2 {
 	 * Initializes the coordinates of this point to {@code (0.0, 0.0)}.
 	 */
 	public Point2() {
-		this.x = 0.0;
-		this.y = 0.0;
+		this(0.0, 0.0);
 	}
 	
 	/**
@@ -40,8 +39,6 @@ public class Point2 {
 	 */
 	public Point2(Point2 other) {
 		this(other.x(), other.y());
-		this.x = other.x;
-		this.y = other.y;
 	}
 	
 	/**
@@ -66,7 +63,7 @@ public class Point2 {
 	 * Sets the x coordinate to the specified value.
 	 * 
 	 * @param newX the new x coordinate
-	 * @return a reference to this coordinate
+	 * @return a reference to this point
 	 */
 	public Point2 x(double newX) {
 		this.x = newX;
@@ -77,7 +74,7 @@ public class Point2 {
 	 * Sets the y coordinate to the specified value.
 	 * 
 	 * @param newY the new y coordinate
-	 * @return a reference to this coordinate
+	 * @return a reference to this point
 	 */
 	public Point2 y(double newY) {
 		this.y = newY;
@@ -89,7 +86,7 @@ public class Point2 {
 	 * 
 	 * @param newX the new x coordinate
 	 * @param newY the new y coordinate
-	 * @return a reference to this coordinate
+	 * @return a reference to this point
 	 */
 	public Point2 set(double newX, double newY) {
 		this.x = newX;
@@ -236,11 +233,11 @@ public class Point2 {
 	}
 	
 	/**
-	 * Returns a string representation of this coordinate. The string
-	 * representation are the elements of the coordinate separated by
+	 * Returns a string representation of this point. The string
+	 * representation are the coordinates of this point separated by
 	 * a comma and space all inside a pair of parentheses.
 	 * 
-	 * @return a string representation of this coordinate
+	 * @return a string representation of this point
 	 */
 	@Override
 	public String toString() {
@@ -250,10 +247,15 @@ public class Point2 {
 			append(this.y).
 			append(")");
 		return s.toString();
-	}
+}
 	
 	public static void main(String[] args) {
-		Point2 p = new Point2();
-		System.out.println(p.set(1, 1).multiply(2));
+		// make a new point specifying the coordinates
+		Point2 p = new Point2(1.0, -1.5);
+		System.out.println("p: " + p.toString());
+		
+		// make a new point copying an existing point
+		Point2 q = new Point2(p);
+		System.out.println("q: " + q.toString());
 	}
 }
