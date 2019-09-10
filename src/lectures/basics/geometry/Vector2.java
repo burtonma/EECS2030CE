@@ -125,6 +125,27 @@ public class Vector2 {
 	}
 	
 	/**
+	 * Divide this vector by a scalar value changing the coordinates of this vector.
+	 * 
+	 * <p>
+	 * Use this method when you want to write something like
+	 * {@code v = v / s} where {@code v} is a vector and {@code s}
+	 * is a scalar.
+	 * 
+	 * @param s the scalar value to divide this vector by
+	 * @return a reference to this vector
+	 * @pre. s != 0.0
+	 * @throws IllegalArgumentException if s == 0.0 is true
+	 */
+	public Vector2 divide(double s) {
+		if (s == 0.0) {
+			throw new IllegalArgumentException("division by 0.0");
+		}
+		this.x /= s;
+		this.y /= s;
+		return this;
+	}	
+	/**
 	 * Negate the coordinates of this vector changing the coordinates of this vector.
 	 * 
 	 * <p>
@@ -196,6 +217,21 @@ public class Vector2 {
 	public static Vector2 multiply(double s, Vector2 v) {
 		Vector2 result = new Vector2();
 		result.set(v.x() * s, v.y() * s);
+		return result;
+	}
+	
+	/**
+	 * Returns a new vector equal to {@code v / s}.
+	 * 
+	 * @param s a scalar
+	 * @param v a vector 
+	 * @return a new vector equal to {@code v / s}
+	 * @pre. s != 0
+	 * @throws IllegalArgumentException if s == 0.0 is true
+	 */
+	public static Vector2 divide(Vector2 p, double s) {
+		Vector2 result = new Vector2();
+		result.divide(s);    // will throw if s == 0.0
 		return result;
 	}
 	
