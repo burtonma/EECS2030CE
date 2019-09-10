@@ -152,8 +152,30 @@ public class Point2 {
 	 * @return a reference to this point
 	 */
 	public Point2 multiply(double s) {
-		this.x *= x;
-		this.y *= y;
+		this.x *= s;
+		this.y *= s;
+		return this;
+	}
+	
+	/**
+	 * Divide this point by a scalar value changing the coordinates of this point.
+	 * 
+	 * <p>
+	 * Use this method when you want to write something like
+	 * {@code p = p / s} where {@code p} is a point and {@code s}
+	 * is a scalar.
+	 * 
+	 * @param s the scalar value to divide this point by
+	 * @return a reference to this point
+	 * @pre. s != 0.0
+	 * @throws IllegalArgumentException if s == 0.0 is true
+	 */
+	public Point2 divide(double s) {
+		if (s == 0.0) {
+			throw new IllegalArgumentException("division by 0.0");
+		}
+		this.x /= s;
+		this.y /= s;
 		return this;
 	}
 	
@@ -208,6 +230,21 @@ public class Point2 {
 	public static Point2 multiply(double s, Point2 p) {
 		Point2 result = new Point2();
 		result.set(p.x() * s, p.y() * s);
+		return result;
+	}
+	
+	/**
+	 * Returns a new point equal to {@code p / s}.
+	 * 
+	 * @param s a scalar
+	 * @param p a point 
+	 * @return a new point equal to {@code p / s}
+	 * @pre. s != 0
+	 * @throws IllegalArgumentException if s == 0.0 is true
+	 */
+	public static Point2 divide(Point2 p, double s) {
+		Point2 result = new Point2();
+		result.divide(s);    // will throw if s == 0.0
 		return result;
 	}
 	
